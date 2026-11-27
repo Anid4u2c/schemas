@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Anid4u2c/schemas/main/json/project-registry.schema.json",
+  "title": "Codex project registry inventory",
+  "type": "object",
+  "required": ["schemaVersion", "projects"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "projects": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["name", "checkout", "git", "surface", "environment", "reviewed", "next"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "checkout": { "type": "string", "minLength": 1 },
+          "git": { "type": "string", "minLength": 1 },
+          "surface": { "type": "string", "minLength": 1 },
+          "cloud": { "type": "string", "minLength": 1 },
+          "configuration": {
+            "type": "object",
+            "required": ["project", "pwa", "sync"],
+            "properties": {
+              "project": { "type": "string", "format": "uri" },
+              "pwa": { "type": "string", "format": "uri" },
+              "sync": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          },
+          "environment": { "type": "string", "minLength": 1 },
+          "reviewed": { "type": "string", "format": "date" },
+          "next": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
