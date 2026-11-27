@@ -5,6 +5,7 @@
   "type": "object",
   "required": ["schemaVersion", "current", "major", "minor", "status", "readme"],
   "properties": {
+    "$schema": { "type": "string", "format": "uri" },
     "schemaVersion": { "const": 1 },
     "current": { "type": "string", "pattern": "^\\d+\\.\\d+$" },
     "major": { "type": "integer", "minimum": 0 },
@@ -43,7 +44,7 @@
   },
   "allOf": [
     {
-      "if": { "properties": { "current": { "pattern": "^1\\.0$" } } },
+      "if": { "properties": { "current": { "type": "string", "pattern": "^1\\.0$" } } },
       "then": {
         "properties": {
           "major": { "const": 1 },
