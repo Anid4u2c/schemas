@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://raw.githubusercontent.com/Anid4u2c/schemas/main/json/project-registry.schema.json",
-  "title": "Codex project registry inventory",
+  "title": "Project registry inventory",
   "type": "object",
   "required": ["schemaVersion", "projects"],
   "properties": {

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://raw.githubusercontent.com/Anid4u2c/schemas/main/json/project.schema.json",
-  "title": "Codex project authority",
+  "title": "Project authority",
   "type": "object",
   "required": ["schemaVersion", "id", "name", "repository", "readme"],
   "properties": {
