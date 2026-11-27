@@ -5,6 +5,7 @@
   "type": "object",
   "required": ["schemaVersion", "projects"],
   "properties": {
+    "$schema": { "type": "string", "format": "uri" },
     "schemaVersion": { "const": 1 },
     "projects": {
       "type": "object",
