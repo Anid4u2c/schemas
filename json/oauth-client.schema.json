@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Anid4u2c/schemas/main/json/oauth-client.schema.json",
+  "title": "OAuth client inventory entry",
+  "type": "object",
+  "required": ["clientId", "type", "evidence"],
+  "properties": {
+    "clientId": { "type": "string", "pattern": "^[0-9]+-[a-z0-9]+\\.apps\\.googleusercontent\\.com$" },
+    "displayName": { "type": "string", "minLength": 1 },
+    "type": { "enum": ["web", "android", "ios", "desktop", "other"] },
+    "authorizedOrigins": { "type": "array", "items": { "type": "string", "format": "uri" }, "uniqueItems": true },
+    "redirectUris": { "type": "array", "items": { "type": "string", "format": "uri" }, "uniqueItems": true },
+    "evidence": { "$ref": "evidence.schema.json" }
+  },
+  "additionalProperties": false
+}

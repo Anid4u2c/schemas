@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Anid4u2c/schemas/main/json/evidence.schema.json",
+  "title": "Non-secret configuration evidence",
+  "type": "object",
+  "required": ["source", "verifiedAt", "scope"],
+  "properties": {
+    "source": { "type": "string", "minLength": 1 },
+    "verifiedAt": { "type": "string", "format": "date-time" },
+    "scope": { "type": "string", "minLength": 1 },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

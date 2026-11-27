@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Anid4u2c/schemas/main/json/firebase-products.schema.json",
+  "title": "Repository-declared Firebase products",
+  "type": "object",
+  "properties": {
+    "authentication": { "$ref": "#/$defs/product" },
+    "firestore": {
+      "type": "object",
+      "allOf": [
+        { "$ref": "#/$defs/productFields" },
+        { "type": "object", "properties": { "rulesFile": { "type": "string" }, "indexesFile": { "type": "string" }, "databases": { "type": "array", "items": { "$ref": "firestore-database.schema.json" } } } }
+      ],
+      "unevaluatedProperties": false
+    },
+    "hosting": { "$ref": "#/$defs/product" },
+    "functions": { "$ref": "#/$defs/product" },
+    "storage": { "$ref": "#/$defs/product" },
+    "remoteConfig": { "$ref": "#/$defs/product" },
+    "appCheck": { "$ref": "#/$defs/product" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "product": {
+      "type": "object",
+      "$ref": "#/$defs/productFields",
+      "unevaluatedProperties": false
+    },
+    "productFields": {
+      "type": "object",
+      "required": ["declared", "sourceFiles"],
+      "properties": {
+        "declared": { "type": "boolean" },
+        "sourceFiles": { "type": "array", "minItems": 1, "items": { "type": "string" }, "uniqueItems": true },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

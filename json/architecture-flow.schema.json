@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Anid4u2c/schemas/main/json/architecture-flow.schema.json",
+  "title": "Repository-declared architecture flow",
+  "type": "object",
+  "required": ["from", "to", "purpose"],
+  "properties": {
+    "from": { "type": "string", "minLength": 1 },
+    "to": { "type": "string", "minLength": 1 },
+    "purpose": { "type": "string", "minLength": 1 },
+    "sourceFiles": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true }
+  },
+  "additionalProperties": false
+}

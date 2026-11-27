@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Anid4u2c/schemas/main/json/firestore-database.schema.json",
+  "title": "Firestore database inventory entry",
+  "type": "object",
+  "required": ["id", "edition", "type", "location", "evidence"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "edition": { "enum": ["STANDARD", "ENTERPRISE"] },
+    "type": { "enum": ["FIRESTORE_NATIVE"] },
+    "location": { "type": "string", "minLength": 1 },
+    "declaredCollections": { "type": "array", "items": { "$ref": "firestore-collection.schema.json" }, "uniqueItems": true },
+    "evidence": { "$ref": "evidence.schema.json" }
+  },
+  "additionalProperties": false
+}
