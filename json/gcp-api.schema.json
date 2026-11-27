@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Anid4u2c/schemas/main/json/gcp-api.schema.json",
+  "title": "Enabled Google Cloud API inventory entry",
+  "type": "object",
+  "required": ["service", "state", "evidence"],
+  "properties": {
+    "service": { "type": "string", "pattern": "^[a-z0-9][a-z0-9.-]*\\.googleapis\\.com$" },
+    "title": { "type": "string", "minLength": 1 },
+    "state": { "const": "enabled" },
+    "evidence": { "$ref": "evidence.schema.json" }
+  },
+  "additionalProperties": false
+}

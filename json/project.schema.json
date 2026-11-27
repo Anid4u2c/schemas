@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Anid4u2c/schemas/main/json/project.schema.json",
+  "title": "Codex project authority",
+  "type": "object",
+  "required": ["schemaVersion", "id", "name", "repository", "readme"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "name": { "type": "string", "minLength": 1 },
+    "repository": {
+      "type": "object",
+      "required": ["owner", "name", "defaultBranch"],
+      "properties": {
+        "owner": { "type": "string", "minLength": 1 },
+        "name": { "type": "string", "minLength": 1 },
+        "defaultBranch": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "readme": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "enum": ["showcase", "guided", "reference", "custom", "not_applicable"]
+        },
+        "source": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "firebase": {
+      "$ref": "firebase-authority.schema.json"
+    },
+    "cloud": {
+      "$ref": "cloud-inventory.schema.json"
+    },
+    "architecture": {
+      "$ref": "architecture.schema.json"
+    },
+    "configuration": {
+      "type": "object",
+      "properties": {
+        "pwa": { "const": "config/pwa.json" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

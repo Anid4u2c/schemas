@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Anid4u2c/schemas/main/json/firestore-collection.schema.json",
+  "title": "Declared Firestore collection model",
+  "type": "object",
+  "required": ["path", "sourceFiles"],
+  "properties": {
+    "path": { "type": "string", "pattern": "^[A-Za-z0-9_-]+(?:/\\{[^/{}]+\\}/[A-Za-z0-9_-]+)*$" },
+    "description": { "type": "string" },
+    "sourceFiles": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 }, "uniqueItems": true }
+  },
+  "additionalProperties": false
+}

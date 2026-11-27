@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Anid4u2c/schemas/main/json/cloud-inventory.schema.json",
+  "title": "Live Google Cloud and Firebase inventory",
+  "type": "object",
+  "required": ["gcpProjectId", "evidence"],
+  "properties": {
+    "gcpProjectId": { "type": "string", "minLength": 1 },
+    "gcloudConfiguration": { "type": "string", "minLength": 1 },
+    "enabledApis": { "type": "array", "items": { "$ref": "gcp-api.schema.json" }, "uniqueItems": true },
+    "serviceAccounts": { "type": "array", "items": { "$ref": "service-account.schema.json" }, "uniqueItems": true },
+    "oauthClients": { "type": "array", "items": { "$ref": "oauth-client.schema.json" }, "uniqueItems": true },
+    "evidence": { "$ref": "evidence.schema.json" }
+  },
+  "additionalProperties": false
+}
