@@ -3,52 +3,161 @@
   "$id": "https://raw.githubusercontent.com/Anid4u2c/schemas/main/json/pwa.schema.json",
   "title": "PWA configuration authority",
   "type": "object",
-  "required": ["schemaVersion", "current", "major", "minor", "status", "readme"],
+  "required": [
+    "schemaVersion",
+    "current",
+    "major",
+    "minor",
+    "status",
+    "readme"
+  ],
   "properties": {
-    "$schema": { "type": "string", "format": "uri" },
-    "schemaVersion": { "const": 1 },
-    "current": { "type": "string", "pattern": "^\\d+\\.\\d+$" },
-    "major": { "type": "integer", "minimum": 0 },
-    "minor": { "type": "integer", "minimum": 0 },
+    "$schema": {
+      "type": "string",
+      "format": "uri"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "current": {
+      "type": "string",
+      "pattern": "^(?:[0-9]+\\.[0-9]+|(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*))$"
+    },
+    "major": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "minor": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
     "status": {
-      "enum": ["planned", "in_progress", "adopted", "not_applicable"]
+      "enum": [
+        "planned",
+        "in_progress",
+        "adopted",
+        "not_applicable"
+      ]
     },
     "readme": {
       "type": "object",
-      "required": ["type"],
+      "required": [
+        "type"
+      ],
       "properties": {
-        "type": { "enum": ["showcase", "guided", "reference", "custom", "not_applicable"] }
+        "type": {
+          "enum": [
+            "showcase",
+            "guided",
+            "reference",
+            "custom",
+            "not_applicable"
+          ]
+        }
       },
       "additionalProperties": true
     },
     "firestore": {
       "type": "object",
-      "required": ["projectId", "database", "currentDocument", "versionCollection"],
+      "required": [
+        "projectId",
+        "database",
+        "currentDocument",
+        "versionCollection"
+      ],
       "properties": {
-        "projectId": { "type": "string", "minLength": 1 },
-        "database": { "const": "(default)" },
-        "currentDocument": { "const": "config/pwa" },
-        "versionCollection": { "const": "config/pwa/version" }
+        "projectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "database": {
+          "const": "(default)"
+        },
+        "currentDocument": {
+          "const": "config/pwa"
+        },
+        "versionCollection": {
+          "const": "config/pwa/version"
+        }
       },
       "additionalProperties": true
     },
     "sync": {
       "type": "object",
-      "required": ["source", "workflow"],
+      "required": [
+        "source",
+        "workflow"
+      ],
       "properties": {
-        "source": { "const": "repository" },
-        "workflow": { "type": "string", "minLength": 1 }
+        "source": {
+          "const": "repository"
+        },
+        "workflow": {
+          "type": "string",
+          "minLength": 1
+        }
       },
       "additionalProperties": true
+    },
+    "patch": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
     }
   },
   "allOf": [
     {
-      "if": { "properties": { "current": { "type": "string", "pattern": "^1\\.0$" } } },
+      "if": {
+        "properties": {
+          "current": {
+            "type": "string",
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+          }
+        },
+        "required": [
+          "current"
+        ]
+      },
+      "then": {
+        "required": [
+          "patch"
+        ],
+        "properties": {
+          "patch": {}
+        }
+      },
+      "else": {
+        "not": {
+          "required": [
+            "patch"
+          ],
+          "properties": {
+            "patch": {}
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "current": {
+            "const": "1.0"
+          }
+        },
+        "required": [
+          "current"
+        ]
+      },
       "then": {
         "properties": {
-          "major": { "const": 1 },
-          "minor": { "const": 0 }
+          "major": {
+            "const": 1
+          },
+          "minor": {
+            "const": 0
+          }
         }
       }
     }
