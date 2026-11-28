@@ -1,0 +1,18 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Anid4u2c/schemas/main/json/project.schema.json",
+  "schemaVersion": 1,
+  "id": "schemas",
+  "name": "schemas",
+  "repository": {
+    "owner": "Anid4u2c",
+    "name": "schemas",
+    "defaultBranch": "main"
+  },
+  "readme": {
+    "type": "custom",
+    "source": "README.md"
+  },
+  "configuration": {
+    "pwa": "config/pwa.json"
+  }
+}
