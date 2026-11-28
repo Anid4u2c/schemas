@@ -117,6 +117,37 @@
       "type": "integer",
       "minimum": 0,
       "maximum": 2147483647
+    },
+    "runtime": {
+      "type": "object",
+      "description": "Proposed non-sensitive runtime settings. Their presence does not activate sync or establish a live authority.",
+      "required": [
+        "presentation"
+      ],
+      "properties": {
+        "presentation": {
+          "type": "object",
+          "description": "Public presentation values only; not authorization, account data, secrets or deployment controls.",
+          "required": [
+            "showAdminLogin",
+            "footerLayout"
+          ],
+          "properties": {
+            "showAdminLogin": {
+              "type": "boolean"
+            },
+            "footerLayout": {
+              "enum": [
+                "compact",
+                "contact",
+                "expanded"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
     }
   },
   "allOf": [
