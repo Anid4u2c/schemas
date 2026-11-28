@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Anid4u2c/schemas/main/json/pwa.schema.json",
+  "schemaVersion": 1,
+  "current": "0.1.0",
+  "major": 0,
+  "minor": 1,
+  "patch": 0,
+  "status": "not_applicable",
+  "readme": {
+    "type": "custom"
+  },
+  "reason": "Shared JSON Schema library; no PWA application."
+}
